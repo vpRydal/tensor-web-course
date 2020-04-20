@@ -1,0 +1,22 @@
+{
+  "name": "tensor-web-course",
+  "version": "1.0.0",
+  "description": "tensor web course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpRydal/tensor-web-course.git"
+  },
+  "author": "Rydal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vpRydal/tensor-web-course/issues"
+  },
+  "homepage": "https://github.com/vpRydal/tensor-web-course#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
