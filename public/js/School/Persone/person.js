@@ -6,9 +6,9 @@
 /**
  * @class Person
  *
+ * @property {string} school
  * @property {Fio} fio
- * @property {Fio} _fio
- * @property {string} _photoPath
+ * @property {string} photoPath
  *
  * @private _fio
  * @private _photoPath
@@ -20,14 +20,29 @@ class Person {
      * @constructor
      * @param {Fio} fio
      * @param {string} photoPath
+     * @param {School} school
      * @param {Date} birthDate
      */
-    constructor(fio, photoPath, birthDate) {
+    constructor(fio, photoPath, school, birthDate) {
         this._fio = fio
         this._photoPath = photoPath
         this._birthDate = birthDate
+        this._school = school
+    }
+    /**
+     * @param {School} school
+     */
+    set school(school) {
+        this._school = school
     }
 
+
+    /**
+     * @return School
+     */
+    get school() {
+        return this._school
+    }
     /**
      * @return Fio
      */

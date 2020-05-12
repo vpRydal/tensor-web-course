@@ -60,6 +60,15 @@ class Fio {
     get isEmpty() {
         return this._isEmpty
     }
+
+    /**
+     * @access
+     * @returns {string}
+     */
+    get name() {
+        return this._name
+    }
+
 }
 
 export default Fio

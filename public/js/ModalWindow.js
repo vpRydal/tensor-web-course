@@ -9,6 +9,11 @@ class Modal {
         this._modal.classList.add('modal-show')
     }
 
+    /**
+     *
+     * @param {string} content
+     */
+
     render(content) {
         let modal = this.renderModal()
         let body = this.renderBody()
@@ -16,7 +21,7 @@ class Modal {
         let dialog = this.renderDialog()
         let modalContent = this.renderContent()
 
-        body.appendChild(content)
+        body.innerHTML = content
 
         modalContent.appendChild(title)
         modalContent.appendChild(body)
