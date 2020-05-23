@@ -58,8 +58,11 @@ body {
     flex-wrap: wrap;
 
     z-index: 1;
+
+    flex-basis: 0;
 }
 .avatar {
+    flex: 1 1 0;
     display: flex;
     flex-direction: column;
 
@@ -83,8 +86,8 @@ body {
     transition-duration: .5s;
 }
 .avatar-img {
-    max-height: 165px;
-    max-width: 165px;
+    height: 165px;
+    width: 165px;
 
     display: block;
     margin: 0 auto;
@@ -156,7 +159,7 @@ body {
     text-decoration: none;
 }
 
-.modal-show {
+.modal__show {
     opacity: 1;
     display: flex;
     flex-direction: column;
