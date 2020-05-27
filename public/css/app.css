@@ -61,6 +61,12 @@ body {
 
     flex-basis: 0;
 }
+.content {
+    display: flex;
+    flex-direction: column;
+
+
+}
 .avatar {
     flex: 1 1 0;
     display: flex;
@@ -201,6 +207,14 @@ body {
 .card-info-row-name {
     color: rgba(128, 128, 128, 0.62);
 
+}
+
+.honorBoard {
+    display: flex;
+    flex-direction: column;
+}
+.honorBoard-title {
+    text-align: center;
 }
 
 @media (min-width: 576px) {

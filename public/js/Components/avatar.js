@@ -11,12 +11,12 @@ class Avatar extends Component {
         this._modalCard = undefined
     }
 
-    render(options) {
+    render({student}) {
         return `
         <div class="avatar avatar__rounded">
-            <img src="${options.photoPath}" alt="Аватарка" class="avatar-img">
-            <span class="avatar-name">${options.fio}</span>
-            <span class="avatar-university">${options.schoolNameAndYear} курс</span>
+            <img src="${student.photo_path}" alt="Аватарка" class="avatar-img">
+            <span class="avatar-name">${student.fio}</span>
+            <span class="avatar-university">${student.study} курс</span>
         </div>
         `
     }
@@ -26,21 +26,24 @@ class Avatar extends Component {
     }
 
     openCard() {
+        const student = this._options.student
+        const birth_date = new Date(this._options.student.birth_date)
+
         if (!this._modalCard) {
             const content = `
                 <div class="card">
                      <div class="card-info">
-                          <h2 class="card-info-name">${this._options.fio}</h2>
+                          <h2 class="card-info-name">${student.fio}</h2>
                           <div class="card-info-row">
                               <span class="card-info-row-name">Вуз</span>
-                              <span class="card-info-row-value">${this._options.schoolNameAndYear} курс</span>
+                              <span class="card-info-row-value">${student.study} курс</span>
                           </div>
                      <div class="card-info-row">
                          <span class="card-info-row-name">День рождения</span>
-                         <span class="card-info-row-value">${this._options.birthDate.getDay()}.${this._options.birthDate.getMonth()}.${this._options.birthDate.getFullYear()} курс</span>
+                         <span class="card-info-row-value">${birth_date.getDay()}.${birth_date.getMonth()}.${birth_date.getFullYear()}</span>
                      </div>
                      </div>
-                     <img src="${this._options.photoPath}" alt="Аватарка" class="card-img">
+                     <img src="${student.photo_path}" alt="Аватарка" class="card-img">
                 </div>
             `
             this._modalCard = ComponentFactory.create(ModalWindow, {content})
