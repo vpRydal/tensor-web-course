@@ -1,4 +1,4 @@
-import Component from "./component.js";
+import Component from "../../Core/component.js";
 
 class ModalWindow extends Component {
     'use strict';
@@ -14,7 +14,7 @@ class ModalWindow extends Component {
 
             <div class="modal-body">
                     <div class="modal-title">
-                        <h2>Карточка студента</h2>
+                        <h2>${options.title}</h2>
                         <span class="modal-close">х</span>
                     </div>
                     <div class="modal-content">

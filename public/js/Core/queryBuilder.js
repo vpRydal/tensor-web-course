@@ -1,6 +1,8 @@
 /**
  * @property {ActiveRecord} _model
  */
+import Model from "../App/Facades/model.js";
+
 class QueryBuilder {
     _select
     _where
@@ -8,9 +10,12 @@ class QueryBuilder {
     _limit
     _offset
     _model
+    _tableName
 
-    constructor(model, props) {
-        this._model = model
+    constructor(modelAlias, props) {
+        this._modelAlias = modelAlias
+
+        this._tableName = Model.getClassModel(modelAlias).tableName
 
         return this;
     }
@@ -28,7 +33,7 @@ class QueryBuilder {
             .then(response => response.json())
             .then(data => {
                 return data.reduce((acc, item) => {
-                    let model = Object.create(this._model)
+                    let model = Model.getInstance(this._modelAlias)
 
                     model.fill(item)
 
@@ -39,8 +44,8 @@ class QueryBuilder {
             })
     }
 
-    where(args) {
-        this._where = args;
+    where(options) {
+        this._where = options;
 
         return this
     }
@@ -53,7 +58,7 @@ class QueryBuilder {
         })
             .then(response => response.json())
             .then(data => {
-                let model = Object.create(this._model)
+                let model = Model.getInstance(this._modelAlias)
 
                 model.fill(data[0])
 
@@ -62,7 +67,7 @@ class QueryBuilder {
     }
 
     renderQuery({first}) {
-        let query = `/${this._model.tableName}?`
+        let query = `/${this._tableName}?`
 
         if(first) {
             this._limit = 1

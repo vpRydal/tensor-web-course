@@ -5,6 +5,8 @@ class Component {
         this._options = options;
         this._container = undefined;
         this._handlers = {};
+        this._isMounted = false;
+        this._id = this.randomInteger(1, 10000);
 
     }
 
@@ -17,8 +19,8 @@ class Component {
      * @param {HTMLElement} container контейнер в котором строиться верстка, куда поместить
      * @param {String} position insertAdjacentElement позиция куда помесить, до, в, вконец, после
      */
-    mount(container, position='') {
-        this.beforeMount();
+    async mount(container, position='') {
+        await this.beforeMount();
 
         const newComponent = document.createElement('div');
 
@@ -30,7 +32,11 @@ class Component {
 
         newComponent.remove();
 
-        this.afterMount();
+        this.afterMount(this._options);
+
+        this._isMounted = true;
+
+        return this
     }
 
 
@@ -64,6 +70,22 @@ class Component {
         target.addEventListener(eventName, handler);
     }
 
+    hide() {
+        this._container.style.display = "none"
+        this._container.style.opacity = "0"
+        this._container.style.visibility = "hidden"
+    }
+
+    show(options={}) {
+        this._container.style.display = options.display || "block"
+        this._container.style.opacity = "1"
+        this._container.style.visibility = "visible"
+    }
+
+    isMounted() {
+        return this._isMounted
+    }
+
     beforeMount() {}
 
     afterMount() {}
@@ -74,6 +96,12 @@ class Component {
 
     get container() {
         return this._container
+    }
+
+    randomInteger(min, max) {
+        let rand = min - 0.5 + Math.random() * (max - min + 1);
+
+        return Math.round(rand);
     }
 }
 

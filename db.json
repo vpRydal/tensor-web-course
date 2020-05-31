@@ -1,49 +1,94 @@
 {
-  "student": [
+  "students": [
     {
       "id": 1,
       "fio": "Миша Петров",
       "photo_path": "img/ava01.jpg",
-      "study": "Угату",
       "birth_date": "2000-05-01T00:00:00.000Z",
       "phone": "+7 (963) 123-45-67",
-      "active": "2020-04-11T18:01:47.339Z"
+      "active": "2020-04-11T18:01:47.339Z",
+      "school_id": 1,
+      "study_year": "2"
+
     },
     {
       "id": 3,
       "fio": "Женя Серова",
       "photo_path": "img/ava03.jpg",
-      "study": "Угату",
       "birth_date": "1998-11-13T00:00:00.000Z",
       "phone": "+7 (963) 123-45-67",
-      "active": "2020-04-03T15:00:00.000Z"
+      "active": "2020-04-03T15:00:00.000Z",
+      "school_id": 1,
+      "study_year": "1"
     },
     {
       "id": 4,
       "fio": "Вася Васильев",
       "photo_path": "img/ava04.jpg",
-      "study": "Угату",
       "birth_date": "2000-05-01T00:00:00.000Z",
       "phone": "+7 (963) 123-45-67",
-      "active": "2020-04-11T18:01:47.340Z"
+      "active": "2020-04-11T18:01:47.340Z",
+      "school_id": 2,
+      "study_year": "2"
     },
     {
       "id": 5,
       "fio": "Вика Цукерберг",
       "photo_path": "img/ava05.jpg",
-      "study": "БГПУ",
       "birth_date": "2001-02-08T00:00:00.000Z",
       "phone": "+7 (963) 123-45-67",
-      "active": "2020-03-05T15:00:00.000Z"
-    },
+      "active": "2020-03-05T15:00:00.000Z",
+      "school_id": 2,
+      "study_year": "3"
+    }
+  ],
+  "teachers": [
     {
-      "id": 6,
-      "fio": "Дедя Федор Илынбаев",
+      "id": 1,
+      "fio": "Вика Цукерберг",
       "photo_path": "img/ava06.jpg",
-      "study": "",
       "birth_date": "1974-07-24T00:00:00.000Z",
       "phone": "+7 (963) 123-45-67",
-      "active": "2020-04-03T15:00:00.000Z"
+      "school_id": 1,
+      "position": "Доцент"
+
+    },
+    {
+      "id": 1,
+      "fio": "Дедя Федор Илынбаев",
+      "photo_path": "img/ava01.jpg",
+      "birth_date": "1974-07-24T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "school_id": 1,
+      "position": "Док. Наук"
+    },
+    {
+      "id": 1,
+      "fio": "Вася Васильев",
+      "photo_path": "img/ava02.jpg",
+      "birth_date": "1974-07-24T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "school_id": 2,
+      "position": "Лектор"
+    },
+    {
+      "id": 1,
+      "fio": "Женя Серова",
+      "photo_path": "img/ava01.jpg",
+      "birth_date": "1974-07-24T00:00:00.000Z",
+      "phone": "+7 (963) 123-45-67",
+      "school_id": 2,
+      "position": "Доцент"
+    }
+  ],
+  "schools": [
+    {
+      "id": 1,
+      "name": "СевГу"
+    },
+    {
+      "id": 2,
+      "name": "УГТУ"
     }
   ]
 }

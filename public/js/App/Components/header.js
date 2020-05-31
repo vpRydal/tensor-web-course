@@ -1,4 +1,4 @@
-import Component from "./component.js";
+import Component from "../../Core/component.js";
 
 class Header extends Component {
     'use strict';

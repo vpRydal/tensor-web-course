@@ -1,7 +1,8 @@
-import Component from "./component.js";
+import Component from "../../Core/component.js";
 import ComponentFactory from "../Factory/componentFactory.js";
-import Avatar from "./avatar.js";
-import Student from "../models/student.js";
+import Avatar from "./Avatars/avatar.js";
+import Student from "../Models/student.js";
+import App from "../Facades/app.js";
 
 class HonorBoard extends Component {
     'use strict';
@@ -19,12 +20,10 @@ class HonorBoard extends Component {
     }
 
     afterMount() {
-        let student = new Student()
-
-        student.select('name').where({
+        Student.select('name').where({
             id: 6
         }).first().then(student => {
-            ComponentFactory.create(Avatar, {
+            App.get('ComponentFactory').create(Avatar, {
                 student
             }).mount(this._container);
         })
