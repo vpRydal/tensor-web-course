@@ -1,0 +1,86 @@
+Index: public/test/test.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {} from './../js/App/bootstrap.js'\nimport App from \"../js/App/Facades/app.js\";\nimport ComponentFactory from \"../js/App/Factory/componentFactory.js\";\nimport ModelFactory from \"../js/App/Factory/modelFactory.js\";\nimport Component from \"../js/Core/component.js\";\nimport Main from \"../js/App/Components/main.js\";\nimport Header from \"../js/App/Components/header.js\";\n\ndescribe(\"Test 'App' facade\", function() {\n   'use strict';\n    it('If call \"get\" method with alias \"ComponentFactory\" mast return instance of ComponentFactory', function() {\n        const componentFactory = App.get('ComponentFactory')\n\n        assert.equal(componentFactory instanceof ComponentFactory, true);\n    })\n    it('If call \"get\" method with alias \"ModelFactory\" mast return instance of ModelFactory', function() {\n        const modelFactory = App.get('ModelFactory')\n\n        assert.equal(modelFactory instanceof ModelFactory, true);\n    })\n});\n\ndescribe(\"Test creation of components on factory\", function() {\n    'use strict';\n    it('Component \"Main\" mast be extends of class \"Component\"', function() {\n        const componentFactory = App.get('ComponentFactory')\n\n        assert.equal(componentFactory.create(Main) instanceof Component, true);\n    })\n\n    it('Component \"Header\" mast be extends of class \"Component\"', function() {\n        const componentFactory = App.get('ComponentFactory')\n\n        assert.equal(componentFactory.create(Header) instanceof Component, true);\n    })\n});\n\nmocha.run();\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- public/test/test.js	(revision 29618394df0617e560904db24755a1b56c34a6b8)
++++ public/test/test.js	(date 1590995222895)
+@@ -4,7 +4,6 @@
+ import ModelFactory from "../js/App/Factory/modelFactory.js";
+ import Component from "../js/Core/component.js";
+ import Main from "../js/App/Components/main.js";
+-import Header from "../js/App/Components/header.js";
+ 
+ describe("Test 'App' facade", function() {
+    'use strict';
+@@ -20,19 +19,14 @@
+     })
+ });
+ 
+-describe("Test creation of components on factory", function() {
++describe("Test the creation of components via the factory", function() {
+     'use strict';
+-    it('Component "Main" mast be extends of class "Component"', function() {
++    it('Mast be instance of class "Component"', function() {
+         const componentFactory = App.get('ComponentFactory')
+ 
++
+         assert.equal(componentFactory.create(Main) instanceof Component, true);
+     })
+-
+-    it('Component "Header" mast be extends of class "Component"', function() {
+-        const componentFactory = App.get('ComponentFactory')
+-
+-        assert.equal(componentFactory.create(Header) instanceof Component, true);
+-    })
+ });
+ 
+ mocha.run();
+Index: public/test/test (2).js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- public/test/test (2).js	(date 1590984894768)
++++ public/test/test (2).js	(date 1590984894768)
+@@ -0,0 +1,38 @@
++import {} from './../js/App/bootstrap.js'
++import App from "../js/App/Facades/app.js";
++import ComponentFactory from "../js/App/Factory/componentFactory.js";
++import ModelFactory from "../js/App/Factory/modelFactory.js";
++import Component from "../js/Core/component.js";
++import Main from "../js/App/Components/main.js";
++import Header from "../js/App/Components/header.js";
++
++describe("Test 'App' facade", function() {
++   'use strict';
++    it('If call "get" method with alias "ComponentFactory" mast return instance of ComponentFactory', function() {
++        const componentFactory = App.get('ComponentFactory')
++
++        assert.equal(componentFactory instanceof ComponentFactory, true);
++    })
++    it('If call "get" method with alias "ModelFactory" mast return instance of ModelFactory', function() {
++        const modelFactory = App.get('ModelFactory')
++
++        assert.equal(modelFactory instanceof ModelFactory, true);
++    })
++});
++
++describe("Test creation of components on factory", function() {
++    'use strict';
++    it('Component "Main" mast be extends of class "Component"', function() {
++        const componentFactory = App.get('ComponentFactory')
++
++        assert.equal(componentFactory.create(Main) instanceof Component, true);
++    })
++
++    it('Component "Header" mast be extends of class "Component"', function() {
++        const componentFactory = App.get('ComponentFactory')
++
++        assert.equal(componentFactory.create(Header) instanceof Component, true);
++    })
++});
++
++mocha.run();

@@ -1,0 +1,175 @@
+Index: public/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, user-scalable=no\">\n    <link rel=\"stylesheet\" href=\"css/app.css\">\n    <title>Tensor School</title>\n    <script src=\"js/homeworkSix.js\" type=\"module\"></script>\n</head>\n<body>\n<header class=\"header header__XL\">\n    <div class=\"header-title header-title__SM\">\n        <img class=\"header-title-logo header-title-logo__SM\" src=\"img/logo.png\" alt=\"\"/>\n        <span class=\"header-title-text\">Tensor School</span>\n    </div>\n    <span class=\"header-divider\"></span>\n    <p class=\"header-text-about\">\n        Это страница школы Тензор в городе Уфа. Тут вы можете познакомиться с нашими учениками и посмотреть темы\n        занятий.\n    </p>\n</header>\n<main id=\"content\" class=\"container container__LG\">\n</main>\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- public/index.html	(revision 3f5ec657065903c438cd92b07d286eee726b6f55)
++++ public/index.html	(date 1589707106789)
+@@ -5,7 +5,7 @@
+     <meta name="viewport" content="width=device-width, user-scalable=no">
+     <link rel="stylesheet" href="css/app.css">
+     <title>Tensor School</title>
+-    <script src="js/homeworkSix.js" type="module"></script>
++    <script src="js/app.js" type="module"></script>
+ </head>
+ <body>
+ <header class="header header__XL">
+Index: public/js/Core/helpers.js
+===================================================================
+--- public/js/Core/helpers.js	(date 1589707106778)
++++ public/js/Core/helpers.js	(date 1589707106778)
+@@ -0,0 +1,5 @@
++export const randomInteger= (min, max) => {
++    let rand = min - 0.5 + Math.random() * (max - min + 1);
++
++    return Math.round(rand);
++};
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># tensor-web-course
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- README.md	(revision 3f5ec657065903c438cd92b07d286eee726b6f55)
++++ README.md	(date 1589537509249)
+@@ -1,1 +1,36 @@
+-# tensor-web-course
+\ No newline at end of file
++# Домашнее задание 
++
++В index.html пропишите ваши стили css, если нужно
++
++Берем предыдущую домашку и помещаем в папку public/js
++Не затрите app.js
++
++Открываем файл app.js там программа, которая собирает список студентов и учителей, затем помещает их в верстку
++Нужно создать отдельные файлы, в который поместить классы, каждый класс в свой файл.
++
++personLib.js - библиотека, которая импортит в себя файлы с классами и экспортит их для использоватния в приложении
++school.js прямой импорт класса
++
++Подробности работы в комментариях app.js
++Названия классов и методов можно менять
++
++Результат коммитим в git и отправляем на проверку
++Вопросы в чате
++
++## Запуск сервера 
++В консоле переходим в папку проекта
++Обновляем зависимости
++npm install
++
++Для запуска 
++npm run-script start
++
++или в ide клик на скрипте
++
++или 
++node index.js
++
++В браузере переходим
++http://localhost:8080/index.html
++
++
+Index: .idea/jsLibraryMappings.xml
+===================================================================
+--- .idea/jsLibraryMappings.xml	(date 1589704957667)
++++ .idea/jsLibraryMappings.xml	(date 1589704957667)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="JavaScriptLibraryMappings">
++    <file url="PROJECT" libraries="{require.js}" />
++    <includedPredefinedLibrary name="Node.js Core" />
++  </component>
++</project>
+\ No newline at end of file
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"tensor-web-course\",\n  \"version\": \"1.0.0\",\n  \"description\": \"tensor web course\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\",\n    \"start\":  \"node index.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/vpRydal/tensor-web-course.git\"\n  },\n  \"author\": \"Rydal\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/vpRydal/tensor-web-course/issues\"\n  },\n  \"homepage\": \"https://github.com/vpRydal/tensor-web-course#readme\",\n  \"dependencies\": {\n    \"express\": \"^4.17.1\"\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- package.json	(revision 3f5ec657065903c438cd92b07d286eee726b6f55)
++++ package.json	(date 1589701739458)
+@@ -1,23 +1,14 @@
+ {
+-  "name": "tensor-web-course",
+-  "version": "1.0.0",
+-  "description": "tensor web course",
++  "name": "tensorschool",
++  "version": "20.05.14",
++  "description": "Tensor School",
+   "main": "index.js",
+   "scripts": {
+-    "test": "echo \"Error: no test specified\" && exit 1",
+-    "start":  "node index.js"
++    "start": "node index.js"
+   },
+-  "repository": {
+-    "type": "git",
+-    "url": "git+https://github.com/vpRydal/tensor-web-course.git"
+-  },
+-  "author": "Rydal",
+   "license": "ISC",
+-  "bugs": {
+-    "url": "https://github.com/vpRydal/tensor-web-course/issues"
+-  },
+-  "homepage": "https://github.com/vpRydal/tensor-web-course#readme",
+   "dependencies": {
+     "express": "^4.17.1"
+-  }
++  },
++  "devDependencies": {}
+ }
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"tensor-web-course\",\n  \"version\": \"1.0.0\",\n  \"lockfileVersion\": 1,\n  \"requires\": true,\n  \"dependencies\": {\n    \"accepts\": {\n      \"version\": \"1.3.7\",\n      \"resolved\": \"https://registry.npmjs.org/accepts/-/accepts-1.3.7.tgz\",\n      \"integrity\": \"sha512-Il80Qs2WjYlJIBNzNkK6KYqlVMTbZLXgHx2oT0pU/fjRHyEp+PEfEPY0R3WCwAGVOtauxh1hOxNgIf5bv7dQpA==\",\n      \"requires\": {\n        \"mime-types\": \"~2.1.24\",\n        \"negotiator\": \"0.6.2\"\n      }\n    },\n    \"array-flatten\": {\n      \"version\": \"1.1.1\",\n      \"resolved\": \"https://registry.npmjs.org/array-flatten/-/array-flatten-1.1.1.tgz\",\n      \"integrity\": \"sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=\"\n    },\n    \"body-parser\": {\n      \"version\": \"1.19.0\",\n      \"resolved\": \"https://registry.npmjs.org/body-parser/-/body-parser-1.19.0.tgz\",\n      \"integrity\": \"sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==\",\n      \"requires\": {\n        \"bytes\": \"3.1.0\",\n        \"content-type\": \"~1.0.4\",\n        \"debug\": \"2.6.9\",\n        \"depd\": \"~1.1.2\",\n        \"http-errors\": \"1.7.2\",\n        \"iconv-lite\": \"0.4.24\",\n        \"on-finished\": \"~2.3.0\",\n        \"qs\": \"6.7.0\",\n        \"raw-body\": \"2.4.0\",\n        \"type-is\": \"~1.6.17\"\n      }\n    },\n    \"bytes\": {\n      \"version\": \"3.1.0\",\n      \"resolved\": \"https://registry.npmjs.org/bytes/-/bytes-3.1.0.tgz\",\n      \"integrity\": \"sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==\"\n    },\n    \"content-disposition\": {\n      \"version\": \"0.5.3\",\n      \"resolved\": \"https://registry.npmjs.org/content-disposition/-/content-disposition-0.5.3.tgz\",\n      \"integrity\": \"sha512-ExO0774ikEObIAEV9kDo50o+79VCUdEB6n6lzKgGwupcVeRlhrj3qGAfwq8G6uBJjkqLrhT0qEYFcWng8z1z0g==\",\n      \"requires\": {\n        \"safe-buffer\": \"5.1.2\"\n      }\n    },\n    \"content-type\": {\n      \"version\": \"1.0.4\",\n      \"resolved\": \"https://registry.npmjs.org/content-type/-/content-type-1.0.4.tgz\",\n      \"integrity\": \"sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==\"\n    },\n    \"cookie\": {\n      \"version\": \"0.4.0\",\n      \"resolved\": \"https://registry.npmjs.org/cookie/-/cookie-0.4.0.tgz\",\n      \"integrity\": \"sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==\"\n    },\n    \"cookie-signature\": {\n      \"version\": \"1.0.6\",\n      \"resolved\": \"https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.0.6.tgz\",\n      \"integrity\": \"sha1-4wOogrNCzD7oylE6eZmXNNqzriw=\"\n    },\n    \"debug\": {\n      \"version\": \"2.6.9\",\n      \"resolved\": \"https://registry.npmjs.org/debug/-/debug-2.6.9.tgz\",\n      \"integrity\": \"sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==\",\n      \"requires\": {\n        \"ms\": \"2.0.0\"\n      }\n    },\n    \"depd\": {\n      \"version\": \"1.1.2\",\n      \"resolved\": \"https://registry.npmjs.org/depd/-/depd-1.1.2.tgz\",\n      \"integrity\": \"sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=\"\n    },\n    \"destroy\": {\n      \"version\": \"1.0.4\",\n      \"resolved\": \"https://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz\",\n      \"integrity\": \"sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=\"\n    },\n    \"ee-first\": {\n      \"version\": \"1.1.1\",\n      \"resolved\": \"https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz\",\n      \"integrity\": \"sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=\"\n    },\n    \"encodeurl\": {\n      \"version\": \"1.0.2\",\n      \"resolved\": \"https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz\",\n      \"integrity\": \"sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=\"\n    },\n    \"escape-html\": {\n      \"version\": \"1.0.3\",\n      \"resolved\": \"https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz\",\n      \"integrity\": \"sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=\"\n    },\n    \"etag\": {\n      \"version\": \"1.8.1\",\n      \"resolved\": \"https://registry.npmjs.org/etag/-/etag-1.8.1.tgz\",\n      \"integrity\": \"sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=\"\n    },\n    \"express\": {\n      \"version\": \"4.17.1\",\n      \"resolved\": \"https://registry.npmjs.org/express/-/express-4.17.1.tgz\",\n      \"integrity\": \"sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==\",\n      \"requires\": {\n        \"accepts\": \"~1.3.7\",\n        \"array-flatten\": \"1.1.1\",\n        \"body-parser\": \"1.19.0\",\n        \"content-disposition\": \"0.5.3\",\n        \"content-type\": \"~1.0.4\",\n        \"cookie\": \"0.4.0\",\n        \"cookie-signature\": \"1.0.6\",\n        \"debug\": \"2.6.9\",\n        \"depd\": \"~1.1.2\",\n        \"encodeurl\": \"~1.0.2\",\n        \"escape-html\": \"~1.0.3\",\n        \"etag\": \"~1.8.1\",\n        \"finalhandler\": \"~1.1.2\",\n        \"fresh\": \"0.5.2\",\n        \"merge-descriptors\": \"1.0.1\",\n        \"methods\": \"~1.1.2\",\n        \"on-finished\": \"~2.3.0\",\n        \"parseurl\": \"~1.3.3\",\n        \"path-to-regexp\": \"0.1.7\",\n        \"proxy-addr\": \"~2.0.5\",\n        \"qs\": \"6.7.0\",\n        \"range-parser\": \"~1.2.1\",\n        \"safe-buffer\": \"5.1.2\",\n        \"send\": \"0.17.1\",\n        \"serve-static\": \"1.14.1\",\n        \"setprototypeof\": \"1.1.1\",\n        \"statuses\": \"~1.5.0\",\n        \"type-is\": \"~1.6.18\",\n        \"utils-merge\": \"1.0.1\",\n        \"vary\": \"~1.1.2\"\n      }\n    },\n    \"finalhandler\": {\n      \"version\": \"1.1.2\",\n      \"resolved\": \"https://registry.npmjs.org/finalhandler/-/finalhandler-1.1.2.tgz\",\n      \"integrity\": \"sha512-aAWcW57uxVNrQZqFXjITpW3sIUQmHGG3qSb9mUah9MgMC4NeWhNOlNjXEYq3HjRAvL6arUviZGGJsBg6z0zsWA==\",\n      \"requires\": {\n        \"debug\": \"2.6.9\",\n        \"encodeurl\": \"~1.0.2\",\n        \"escape-html\": \"~1.0.3\",\n        \"on-finished\": \"~2.3.0\",\n        \"parseurl\": \"~1.3.3\",\n        \"statuses\": \"~1.5.0\",\n        \"unpipe\": \"~1.0.0\"\n      }\n    },\n    \"forwarded\": {\n      \"version\": \"0.1.2\",\n      \"resolved\": \"https://registry.npmjs.org/forwarded/-/forwarded-0.1.2.tgz\",\n      \"integrity\": \"sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=\"\n    },\n    \"fresh\": {\n      \"version\": \"0.5.2\",\n      \"resolved\": \"https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz\",\n      \"integrity\": \"sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=\"\n    },\n    \"http-errors\": {\n      \"version\": \"1.7.2\",\n      \"resolved\": \"https://registry.npmjs.org/http-errors/-/http-errors-1.7.2.tgz\",\n      \"integrity\": \"sha512-uUQBt3H/cSIVfch6i1EuPNy/YsRSOUBXTVfZ+yR7Zjez3qjBz6i9+i4zjNaoqcoFVI4lQJ5plg63TvGfRSDCRg==\",\n      \"requires\": {\n        \"depd\": \"~1.1.2\",\n        \"inherits\": \"2.0.3\",\n        \"setprototypeof\": \"1.1.1\",\n        \"statuses\": \">= 1.5.0 < 2\",\n        \"toidentifier\": \"1.0.0\"\n      }\n    },\n    \"iconv-lite\": {\n      \"version\": \"0.4.24\",\n      \"resolved\": \"https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz\",\n      \"integrity\": \"sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==\",\n      \"requires\": {\n        \"safer-buffer\": \">= 2.1.2 < 3\"\n      }\n    },\n    \"inherits\": {\n      \"version\": \"2.0.3\",\n      \"resolved\": \"https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz\",\n      \"integrity\": \"sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=\"\n    },\n    \"ipaddr.js\": {\n      \"version\": \"1.9.1\",\n      \"resolved\": \"https://registry.npmjs.org/ipaddr.js/-/ipaddr.js-1.9.1.tgz\",\n      \"integrity\": \"sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==\"\n    },\n    \"media-typer\": {\n      \"version\": \"0.3.0\",\n      \"resolved\": \"https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz\",\n      \"integrity\": \"sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=\"\n    },\n    \"merge-descriptors\": {\n      \"version\": \"1.0.1\",\n      \"resolved\": \"https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-1.0.1.tgz\",\n      \"integrity\": \"sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=\"\n    },\n    \"methods\": {\n      \"version\": \"1.1.2\",\n      \"resolved\": \"https://registry.npmjs.org/methods/-/methods-1.1.2.tgz\",\n      \"integrity\": \"sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=\"\n    },\n    \"mime\": {\n      \"version\": \"1.6.0\",\n      \"resolved\": \"https://registry.npmjs.org/mime/-/mime-1.6.0.tgz\",\n      \"integrity\": \"sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==\"\n    },\n    \"mime-db\": {\n      \"version\": \"1.43.0\",\n      \"resolved\": \"https://registry.npmjs.org/mime-db/-/mime-db-1.43.0.tgz\",\n      \"integrity\": \"sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==\"\n    },\n    \"mime-types\": {\n      \"version\": \"2.1.26\",\n      \"resolved\": \"https://registry.npmjs.org/mime-types/-/mime-types-2.1.26.tgz\",\n      \"integrity\": \"sha512-01paPWYgLrkqAyrlDorC1uDwl2p3qZT7yl806vW7DvDoxwXi46jsjFbg+WdwotBIk6/MbEhO/dh5aZ5sNj/dWQ==\",\n      \"requires\": {\n        \"mime-db\": \"1.43.0\"\n      }\n    },\n    \"ms\": {\n      \"version\": \"2.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/ms/-/ms-2.0.0.tgz\",\n      \"integrity\": \"sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=\"\n    },\n    \"negotiator\": {\n      \"version\": \"0.6.2\",\n      \"resolved\": \"https://registry.npmjs.org/negotiator/-/negotiator-0.6.2.tgz\",\n      \"integrity\": \"sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==\"\n    },\n    \"on-finished\": {\n      \"version\": \"2.3.0\",\n      \"resolved\": \"https://registry.npmjs.org/on-finished/-/on-finished-2.3.0.tgz\",\n      \"integrity\": \"sha1-IPEzZIGwg811M3mSoWlxqi2QaUc=\",\n      \"requires\": {\n        \"ee-first\": \"1.1.1\"\n      }\n    },\n    \"parseurl\": {\n      \"version\": \"1.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/parseurl/-/parseurl-1.3.3.tgz\",\n      \"integrity\": \"sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==\"\n    },\n    \"path-to-regexp\": {\n      \"version\": \"0.1.7\",\n      \"resolved\": \"https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz\",\n      \"integrity\": \"sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=\"\n    },\n    \"proxy-addr\": {\n      \"version\": \"2.0.6\",\n      \"resolved\": \"https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.6.tgz\",\n      \"integrity\": \"sha512-dh/frvCBVmSsDYzw6n926jv974gddhkFPfiN8hPOi30Wax25QZyZEGveluCgliBnqmuM+UJmBErbAUFIoDbjOw==\",\n      \"requires\": {\n        \"forwarded\": \"~0.1.2\",\n        \"ipaddr.js\": \"1.9.1\"\n      }\n    },\n    \"qs\": {\n      \"version\": \"6.7.0\",\n      \"resolved\": \"https://registry.npmjs.org/qs/-/qs-6.7.0.tgz\",\n      \"integrity\": \"sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==\"\n    },\n    \"range-parser\": {\n      \"version\": \"1.2.1\",\n      \"resolved\": \"https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz\",\n      \"integrity\": \"sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==\"\n    },\n    \"raw-body\": {\n      \"version\": \"2.4.0\",\n      \"resolved\": \"https://registry.npmjs.org/raw-body/-/raw-body-2.4.0.tgz\",\n      \"integrity\": \"sha512-4Oz8DUIwdvoa5qMJelxipzi/iJIi40O5cGV1wNYp5hvZP8ZN0T+jiNkL0QepXs+EsQ9XJ8ipEDoiH70ySUJP3Q==\",\n      \"requires\": {\n        \"bytes\": \"3.1.0\",\n        \"http-errors\": \"1.7.2\",\n        \"iconv-lite\": \"0.4.24\",\n        \"unpipe\": \"1.0.0\"\n      }\n    },\n    \"safe-buffer\": {\n      \"version\": \"5.1.2\",\n      \"resolved\": \"https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz\",\n      \"integrity\": \"sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==\"\n    },\n    \"safer-buffer\": {\n      \"version\": \"2.1.2\",\n      \"resolved\": \"https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz\",\n      \"integrity\": \"sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==\"\n    },\n    \"send\": {\n      \"version\": \"0.17.1\",\n      \"resolved\": \"https://registry.npmjs.org/send/-/send-0.17.1.tgz\",\n      \"integrity\": \"sha512-BsVKsiGcQMFwT8UxypobUKyv7irCNRHk1T0G680vk88yf6LBByGcZJOTJCrTP2xVN6yI+XjPJcNuE3V4fT9sAg==\",\n      \"requires\": {\n        \"debug\": \"2.6.9\",\n        \"depd\": \"~1.1.2\",\n        \"destroy\": \"~1.0.4\",\n        \"encodeurl\": \"~1.0.2\",\n        \"escape-html\": \"~1.0.3\",\n        \"etag\": \"~1.8.1\",\n        \"fresh\": \"0.5.2\",\n        \"http-errors\": \"~1.7.2\",\n        \"mime\": \"1.6.0\",\n        \"ms\": \"2.1.1\",\n        \"on-finished\": \"~2.3.0\",\n        \"range-parser\": \"~1.2.1\",\n        \"statuses\": \"~1.5.0\"\n      },\n      \"dependencies\": {\n        \"ms\": {\n          \"version\": \"2.1.1\",\n          \"resolved\": \"https://registry.npmjs.org/ms/-/ms-2.1.1.tgz\",\n          \"integrity\": \"sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==\"\n        }\n      }\n    },\n    \"serve-static\": {\n      \"version\": \"1.14.1\",\n      \"resolved\": \"https://registry.npmjs.org/serve-static/-/serve-static-1.14.1.tgz\",\n      \"integrity\": \"sha512-JMrvUwE54emCYWlTI+hGrGv5I8dEwmco/00EvkzIIsR7MqrHonbD9pO2MOfFnpFntl7ecpZs+3mW+XbQZu9QCg==\",\n      \"requires\": {\n        \"encodeurl\": \"~1.0.2\",\n        \"escape-html\": \"~1.0.3\",\n        \"parseurl\": \"~1.3.3\",\n        \"send\": \"0.17.1\"\n      }\n    },\n    \"setprototypeof\": {\n      \"version\": \"1.1.1\",\n      \"resolved\": \"https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.1.1.tgz\",\n      \"integrity\": \"sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==\"\n    },\n    \"statuses\": {\n      \"version\": \"1.5.0\",\n      \"resolved\": \"https://registry.npmjs.org/statuses/-/statuses-1.5.0.tgz\",\n      \"integrity\": \"sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=\"\n    },\n    \"toidentifier\": {\n      \"version\": \"1.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.0.tgz\",\n      \"integrity\": \"sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==\"\n    },\n    \"type-is\": {\n      \"version\": \"1.6.18\",\n      \"resolved\": \"https://registry.npmjs.org/type-is/-/type-is-1.6.18.tgz\",\n      \"integrity\": \"sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==\",\n      \"requires\": {\n        \"media-typer\": \"0.3.0\",\n        \"mime-types\": \"~2.1.24\"\n      }\n    },\n    \"unpipe\": {\n      \"version\": \"1.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz\",\n      \"integrity\": \"sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=\"\n    },\n    \"utils-merge\": {\n      \"version\": \"1.0.1\",\n      \"resolved\": \"https://registry.npmjs.org/utils-merge/-/utils-merge-1.0.1.tgz\",\n      \"integrity\": \"sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=\"\n    },\n    \"vary\": {\n      \"version\": \"1.1.2\",\n      \"resolved\": \"https://registry.npmjs.org/vary/-/vary-1.1.2.tgz\",\n      \"integrity\": \"sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=\"\n    }\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- package-lock.json	(revision 3f5ec657065903c438cd92b07d286eee726b6f55)
++++ package-lock.json	(date 1589698760994)
+@@ -1,6 +1,6 @@
+ {
+-  "name": "tensor-web-course",
+-  "version": "1.0.0",
++  "name": "tensorschool",
++  "version": "20.05.14",
+   "lockfileVersion": 1,
+   "requires": true,
+   "dependencies": {
+@@ -283,6 +283,11 @@
+         "unpipe": "1.0.0"
+       }
+     },
++    "requirejs": {
++      "version": "2.3.6",
++      "resolved": "https://registry.npmjs.org/requirejs/-/requirejs-2.3.6.tgz",
++      "integrity": "sha512-ipEzlWQe6RK3jkzikgCupiTbTvm4S0/CAU5GlgptkN5SO6F3u0UD0K18wy6ErDqiCyP4J4YYe1HuAShvsxePLg=="
++    },
+     "safe-buffer": {
+       "version": "5.1.2",
+       "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz",
+Index: .idea/tensor-web-course.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"WEB_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\" />\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/tensor-web-course.iml	(revision 3f5ec657065903c438cd92b07d286eee726b6f55)
++++ .idea/tensor-web-course.iml	(date 1589704957589)
+@@ -4,5 +4,6 @@
+     <content url="file://$MODULE_DIR$" />
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" name="require.js" level="application" />
+   </component>
+ </module>
+\ No newline at end of file
