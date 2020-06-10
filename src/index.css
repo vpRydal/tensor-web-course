@@ -1,13 +1,245 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Bahnschrift", serif;
+  font-size: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* header styles */
+.header {
+  margin: 4rem auto;
+
+  width: 100%;
+
+  text-align: center;
+  z-index: 1;
+
 }
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header-title-logo {
+  height: 6rem;
+  width: 6rem;
+  margin-bottom: 1rem;
+}
+.header-title-text {
+  font-size: 2.3em;
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  color: black;
+}
+.header-text-about {
+  font-size: 1.5em;
+}
+.header-divider:after {
+  content: '';
+  display: block;
+
+  height: 4px;
+  width: 15%;
+
+  margin: 30px auto;
+
+  background-color: black;
+
+  transition-duration: 2s;
+}
+.header-title:hover + .header-divider:after {
+  transition-duration: 1.5s;
+  width: 20%;
+}
+
+/* content styles */
+.container {
+}
+.content {
+  display: flex;
+  flex-direction: column;
+
+
+}
+.avatar {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  padding: 10px;
+
+  cursor: pointer;
+
+  text-align: center;
+
+  transition-duration: .5s;
+
+  z-index: 1;
+
+}
+.avatar__rounded {
+  border-radius: 0.2rem;
+}
+.avatar:hover {
+  box-shadow: 2px 4px 15px 0 rgba(128, 128, 128, 0.35);
+  transition-duration: .5s;
+}
+.avatar-img {
+  height: 165px;
+  width: 165px;
+
+  display: block;
+  margin: 0 auto;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+.avatar-name {
+  display: block;
+
+  text-align: center;
+
+  font-size: 24px;
+}
+.avatar-university {
+  color: gray;
+  margin-top: 10px;
+
+  font-size: 0.9em;
+}
+
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.49);
+
+  z-index: 3;
+
+  opacity: 0;
+  display: none;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+}
+
+.modal-dialog {
+
+  margin: 30px auto;
+
+  background: white;
+
+
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+}
+
+.modal-title {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #eceeef;
+
+  justify-content: space-between;
+}
+
+.modal-close {
+  float: right;
+  font-size: 24px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+  text-decoration: none;
+}
+
+.modal__show {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+
+  margin: auto;
+  padding: 10px;
+
+  width: 25rem;
+
+  justify-content: space-between;
+
+  border-radius: .2rem;
+}
+.card-img {
+  max-height: 120px;
+  max-width: 120px;
+
+  object-fit: cover;
+
+  border-radius: 10%;
+}
+.card-info {
+  margin-right: 10px;
+
+  width: 15rem;
+  flex-direction: column;
+}
+.card-info-name {
+  margin-bottom: 0;
+}
+.card-info-row {
+  display: flex;
+  justify-content: space-between;
+}
+.card-info-row-name {
+  color: rgba(128, 128, 128, 0.62);
+
+}
+
+.honorBoard {
+  display: flex;
+  flex-direction: column;
+}
+.honorBoard-title {
+  text-align: center;
+}
+
+.school-students {
+  display: flex;
+  flex-wrap: wrap;
+
+  z-index: 1;
+
+  flex-basis: 0;
+}
+
+@media (min-width: 576px) {
+  .header-title__SM {
+    display: block;
+  }
+  .header-title-logo__SM {
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-bottom: 0;
+    margin-right: 5px;
+    visibility: visible;
+  }
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+  .container__LG {
+    margin: 0 20%;
+  }
+}
+@media (min-width: 1200px) {
+  .header__XL {width: 60%;}
+}
+
